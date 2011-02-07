@@ -1,0 +1,92 @@
+body {
+	font-family: monospace;
+	font-size: 13px;
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	display: block;
+}
+
+p.prompt:before,
+p.session-prompt span:after {
+	content: ">";
+	color: rgba(0,0,0,.5);
+	margin-right: 6px;
+}
+
+p.session-prompt:before {
+	content: "";
+	margin-right: 0;
+}
+
+input {
+	border: none;
+	display: inline-block;
+	width: 90%;
+	outline: none;
+	font-family: monospace;
+	font-size: 1em;
+	padding: 0;
+	margin: 0 0 0 -1px;
+}
+
+h1 {
+	display: block;
+	color: #fff;
+	background-color: #118811;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #33aa33), color-stop(1, #118811));
+	background-image: -moz-linear-gradient(top, #33aa33, #118811);
+	line-height: 30px;
+	position: fixed;
+	width: 100%;
+	padding: 0 0 0 10px;
+	margin: 0;
+	font-weight: normal;
+	font-size: 13px;
+}
+
+
+#session-id {
+	float: right;
+	margin-right: 10px;
+}
+
+
+#console {
+	padding: 30px 4px 0;
+}
+
+
+span.waiting {
+	color: lightGrey;
+}
+
+span.element {
+	display: block;
+	clear: left;
+	margin-left: 25px;
+}
+
+span.key {
+	color: purple;
+}
+
+span.number {
+	color: blue;
+}
+
+span.error,
+span.string {
+	color: red;
+}
+
+span.undefined,
+span.null {
+	color: grey;
+}
+
+span.wirebug-message {
+	color: #118811;
+}	

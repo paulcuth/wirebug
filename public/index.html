@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-GB">
+	<head>
+		<title>Wirebug</title>
+		<script src="./jquery.js"></script>
+		<link rel="stylesheet" href="./index.css" />
+
+		<script>
+
+			$(function () {
+				$('input').bind ('click touchstart', function () {
+					this.selectionStart = 0;
+					this.selectionEnd = this.value.length;
+				});
+			});
+
+
+			// Google analytics		
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-21059848-1']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+	</head>
+	<body>
+		<hgroup>
+			<h1>Wirebug</h1>
+			<h2>Debug JavaScript remotely</h2>
+		</hgroup>
+
+		
+		<ol>
+			<li><p>Create a bookmark on your mobile device and point it here: <input value="javascript:(function (){var s=document.createElement('script');s.src='http://<?= ROOT_URL ?>/remote.min.js';document.getElementsByTagName('head')[0].appendChild(s);})();" /><br />or drag this to your bookmarks: <a href="javascript:(function (){var s=document.createElement('script');s.src='http://<?= ROOT_URL ?>/remote.min.js';document.getElementsByTagName('head')[0].appendChild(s);})();">Debug with Wirebug</a></p></li>
+			<li><p>On your remote/mobile device, go to the page you want to debug and hit the bookmark.</p></li>
+			<li><p>On your desktop machine, go to the <a href="./console">Wirebug console</a>, enter your Session Id and debug away.</p></li>
+		</ol>
+		
+		<footer>Please send feedback to <a href="http://twitter.com/paulcuth">@paulcuth</a>.</footer>
+	</body>
+</html>
