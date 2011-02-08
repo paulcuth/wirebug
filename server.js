@@ -67,26 +67,34 @@ function servePage (filename, response, vars) {
 	var path = require ('path');
 
 	path.exists (filename, function (exists) {
+
 		if (exists) {
-
 			var fs = require ('fs'),
-				output = fs.readFileSync (filename, 'ascii'),
-				type,
-				index;
+				encoding = filename.match (/.*\.png$/)? null : 'ascii';
+				
+			fs.readFile (filename, encoding, function (err, output) {
+				var type,
+					index;
 
-			// Insert variable content
-			output = output.replace (/<\?=\s*HOST\s*\?>/g, settings.HOST);
-			output = output.replace (/<\?=\s*PORT\s*\?>/g, settings.PORT);
-			output = output.replace (/<\?=\s*ROOT_URL\s*\?>/g, settings.HOST + ((settings.PORT === 80)? '' : ':' + settings.PORT));
-			
-			for (index in vars) output = output.replace (new RegExp (index, 'g'), vars[index]);
+				if (!encoding) {
+					type = 'image/png';
+					
+				} else {
+					// Insert variable content
+					output = output.replace (/<\?=\s*HOST\s*\?>/g, settings.HOST);
+					output = output.replace (/<\?=\s*PORT\s*\?>/g, settings.PORT);
+					output = output.replace (/<\?=\s*ROOT_URL\s*\?>/g, settings.HOST + ((settings.PORT === 80)? '' : ':' + settings.PORT));
+		
+					for (index in vars) output = output.replace (new RegExp (index, 'g'), vars[index]);
 
-			// Calculate content type based on file extension
-			if (filename.match (/.*\.html$/)) type = 'text/html';
-			if (filename.match (/.*\.css$/)) type = 'text/css';
+					// Calculate content type based on file extension
+					if (filename.match (/.*\.html$/)) type = 'text/html';
+					if (filename.match (/.*\.css$/)) type = 'text/css';
+				}
 
-			// Output content
-		    writeResponse (response, output, 200, type);
+				// Output content
+			    writeResponse (response, output, 200, type);
+			});
 
 		} else {
 
@@ -108,13 +116,7 @@ function servePage (filename, response, vars) {
  */
 function writeResponse (response, output, status, type) {
 
-//	// Include expires in headers so that IE doesn't cache first respose.
-	var headers = { 
-		'Content-Type': type || 'text/javascript'//,
-//		'Cache-Control': 'no-cache, must-revalidate',
-//		'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT'
-	};
-	
+	var headers = { 'Content-Type': type || 'text/javascript' };
 	if (!status) status = 200;
 	
     response.writeHead (status, headers);

@@ -56,12 +56,12 @@ input {
 
 
 ol {
-	width: 250px;
+	width: 629px;
 	margin: 0 auto;
 }
 
 li {
-	width: 250px;
+	width: 629px;
 	padding: 8px 0;	
 	font-family: Georgia;
 	font-size: 50px;
@@ -70,14 +70,39 @@ li {
 li p {
 	font-family: cambria, palatino, georgia, serif;
 	font-size: 17px;
+	padding-right: 354px;
+	background: no-repeat 339px center;
+}
+
+li p.bookmark {
+	background-image: url('./img/bookmark.png');
+	min-height: 150px;
+}
+
+li p.remote {
+	background-image: url('./img/remote.png');
+}
+
+li p.console {
+	background-image: url('./img/console.png');
+	min-height: 127px;
 }
 
 footer {
 	display: block;
 	margin-top: 80px;
-	color: #bbc;
+	color: #778;
 }
 
 footer a {
 	color: #99a;
+}
+
+p.fork-me {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 0;	
 }

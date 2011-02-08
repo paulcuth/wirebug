@@ -34,11 +34,12 @@
 			<h2>Debug JavaScript remotely</h2>
 		</hgroup>
 
+		<p class="fork-me"><a href="http://github.com/paulcuth/wirebug"><img src="https://assets1.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_red_aa0000.png&path=" alt="Fork me on GitHub"></a></p>
 		
 		<ol>
-			<li><p>Create a bookmark on your mobile device and point it here: <input value="javascript:(function (){var s=document.createElement('script');s.src='http://<?= ROOT_URL ?>/remote.min.js';document.getElementsByTagName('head')[0].appendChild(s);})();" /><br />or drag this to your bookmarks: <a href="javascript:(function (){var s=document.createElement('script');s.src='http://<?= ROOT_URL ?>/remote.min.js';document.getElementsByTagName('head')[0].appendChild(s);})();">Debug with Wirebug</a></p></li>
-			<li><p>On your remote/mobile device, go to the page you want to debug and hit the bookmark.</p></li>
-			<li><p>On your desktop machine, go to the <a href="./console">Wirebug console</a>, enter your Session Id and debug away.</p></li>
+			<li><p class="bookmark">Create a bookmark on your remote/mobile device and point it at: <input value="javascript:(function (){var s=document.createElement('script');s.src='http://<?= ROOT_URL ?>/remote.min.js';document.getElementsByTagName('head')[0].appendChild(s);})();" /><br />or drag this to your bookmarks: <a href="javascript:(function (){var s=document.createElement('script');s.src='http://<?= ROOT_URL ?>/remote.min.js';document.getElementsByTagName('head')[0].appendChild(s);})();">Debug with Wirebug</a></p></li>
+			<li><p class="remote">On your remote/mobile device, go to the page you want to debug and hit the bookmark.</p></li>
+			<li><p class="console">On your desktop machine, go to the <a href="./console">Wirebug console</a>, enter your Session Id and debug away.</p></li>
 		</ol>
 		
 		<footer>Please send feedback to <a href="http://twitter.com/paulcuth">@paulcuth</a>.</footer>
