@@ -126,6 +126,17 @@ function writeResponse (response, output, status, type) {
 
 
 /**
+ * Outputs server status.
+ * @param {object} response The http response object to which to write.
+ */
+function writeStatus (response) {
+	writeResponse (response, 'Total sessions: ' + session.Session.total + '\nActive sessions: ' + session.Session.count + '\n', 200, 'text/plain');
+};
+
+
+
+
+/**
  * Creates a new session
  * @returns {number} The Session Id of the new session.
  */
@@ -209,11 +220,12 @@ function handleSocketConnect (client) {
 					receiver.send (data);
 				}
 			}
-		}							
+		}
 		
 	});
-
 };
+
+
 
 
 
@@ -221,8 +233,16 @@ function handleSocketConnect (client) {
 // Init
 
 server = http.createServer (function (request, response) {
-	var url = (request.url == '/')? '/index.html' : request.url;
-	if (url == '/console') url = '/console.html';
+	var url = request.url;
+	
+	// Shortcuts and special cases
+	if (url == '/') {
+		url = '/index.html';
+	} else if (url == '/console') {
+		url = '/console.html';
+	} else if (url == '/status' && request.socket.remoteAddress === '127.0.0.1') {
+		return writeStatus (response);
+	}
 	
 	servePage ('./public' + url, response);
 }),
