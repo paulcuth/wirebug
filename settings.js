@@ -5,7 +5,7 @@
  * @type string
  * @constant
  */
-exports.HOST = '10.193.16.120';
+exports.HOST = 'localhost';
 
 
 
@@ -15,5 +15,5 @@ exports.HOST = '10.193.16.120';
  * @type number
  * @constant
  */
-exports.PORT = 8001;
+exports.PORT = 80;
 

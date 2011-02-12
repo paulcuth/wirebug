@@ -1,11 +1,11 @@
 /**
- * @fileOverview The main Wirebug server, to be executed in Node.js.
+ * @fileOverview Wirebug Session class.
  * @author <a href="http://paulcuth.me.uk">Paul Cuthbertson</a>
  */
  
  
 /**
- * A collection of records.
+ * A session, involving one remote device and one console.
  * @constructor
  * @param {object} [config] Configuration settings.
  *	@config {number} sessionId Identifier of the session.

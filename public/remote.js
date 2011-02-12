@@ -1,5 +1,5 @@
 /**
- * @fileOverview The Wirebug console.
+ * @fileOverview Script to be executed on the remote device.
  * @author <a href="http://paulcuth.me.uk">Paul Cuthbertson</a>
  */
 
@@ -234,23 +234,16 @@ var wirebug,
 	document.getElementsByTagName ('head')[0].appendChild (socketScript);
 
 
-	// ...Once loaded, execute Wirebug remote code.
-	if (socketScript.addEventListener) {
-    	socketScript.addEventListener ('load', main);
-
-	} else {
-		// IE doesn't have a load event on script tag, so use timeout and look for "io" object.
-
-		var check = function () {
-			if (window.io) {
-				main ();
-			} else {
-				window.setTimeout (check, 100);
-			}
-		};
-		
-		check ();
-	}
+	// When present, execute main script
+	var check = function () {
+		if (window.io) {
+			main ();
+		} else {
+			window.setTimeout (check, 100);
+		}
+	};
+	
+	check ();
 
 		
 })();
